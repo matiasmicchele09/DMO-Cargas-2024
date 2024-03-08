@@ -1,23 +1,310 @@
+*{
+  font-family: 'Oswald';
+}
+
+/* Welcome */
 .seccionUno {
   text-align: center;
   position: relative;
-  /*padding-top: 65px;*/
+  justify-content: flex-end;
+  align-items: center;
 }
 .seccionUno img {
   width: 100%;
   min-height: 400px;
+  height: 700px;
 }
 .seccionUno .contenedor {
   position: absolute;
   width: 700px;
   height: auto;
-  font-family: Helvetica;
-  color: #241F74;
-  background-color: #FAFAFA;
-  opacity: 85%;
-  padding: 20px;
-  border-radius: 20px;
-  margin-left: 70px;
-  margin-top: 10%;
-  border: solid;
+  margin: 0px 25px 0px 0px;
+  color: #FDFEFE;
+  text-shadow: -5px 0px 7px #000000;
 }
+
+.seccionUno .tituloParrafo {
+  font-size: 50px;
+}
+
+.seccionUno .parrafo{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* @media screen and (max-width:1500px) {
+  .seccionUno .contenedor {
+      margin-top: 10%;
+  }
+} */
+
+@media screen and (max-width:1100px) {
+  .seccionUno .img {
+      /*visibility: hidden;*/
+      /*max-width: 100%;*/
+      height: auto;
+  }
+  .seccionUno .contenedor {
+      height: auto;
+      /* width: auto; */
+      margin-left: auto;
+  }
+}
+
+@media screen and (max-width:995px) {
+  .navigation {
+      margin-left: 0px;
+  }
+  .seccionUno .contenedor {
+      margin-left: 70px;
+      width: 50%;
+  }
+  .seccionUno .tituloParrafo {
+      font-size: 30px;
+  }
+  .seccionUno .subTitulo {
+      font-size: 25px;
+  }
+  .seccionUno .parrafo {
+      font-size: 10px;
+  }
+}
+
+@media screen and (max-width:415px) {
+  .seccionUno .contenedor {
+      padding: 5px;
+      margin-left: 30px;
+  }
+  .seccionUno .tituloParrafo {
+      font-size: 20px;
+  }
+  .seccionUno .subTitulo {
+      font-size: 20px;
+  }
+}
+
+/* Information */
+.seccionDos .containerCards {
+  margin: 0 20px 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px; /* Espacio entre las cajas */
+  justify-content: center; /* Centra las columnas horizontalmente */
+  align-items: center; /* Centra las filas verticalmente */
+}
+
+.seccionDos .cardBody {
+  padding: 0px;
+  width: 100%;
+  height: 280px;
+  box-shadow: 1px 1px 1px 1px ;
+  text-align: center; /* Centra el contenido horizontalmente */
+}
+
+.seccionDos .cardTitle {
+  font-weight: bold;
+  color: #34495E;
+  text-align: unset;
+}
+
+@media screen and (max-width: 1000px) {
+  .seccionDos .cardBody {
+      width: 100%;
+      justify-content: space-around;
+      margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 995px) {
+  .seccionDos .cardBody {
+      width: 100%;
+      height: 370px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .seccionDos .cardBody {
+      width: 100%;
+      height: auto;
+  }
+}
+/* -----------------------------------------------------------------------------------------------------
+------------------------------------- Sección Tres - Contacto ------------------------------------------
+----------------------------------------------------------------------------------------------------- */
+
+.seccionTres {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+}
+
+
+/* .seccionTres .tarjeta {
+  margin: 30px 15px 15px 0;
+  margin-left: auto;
+} */
+
+.seccionTres img {
+  width: 100%;
+  min-height: 500px;
+}
+
+.seccionTres form .nom,
+.e-mail,
+.tel,
+.dir,
+.ciu,
+.mensj {
+  border-color: #000000;
+  font-size: 15px;
+}
+
+.seccionTres .form-contacto {
+  max-width: 50%;
+  margin: 30px 15px 15px 0;
+  max-height: 450px;
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 15px;
+  border: solid;
+  border-color: #241F74;
+  background-color: #FAFAFA;
+  opacity: 95%;
+}
+
+.seccionTres form .botonEnviar {
+  display: flex;
+  justify-content: center;
+}
+
+.seccionTres form .btnEnviaForm {
+  background: #241F74;
+  color: #FAFAFA;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+.seccionTres form .btnEnviaForm:hover {
+  background: #4136df;
+  color: #FAFAFA;
+}
+
+@media screen and (max-width:1000px) {
+  .seccionTres img {
+      height: 700px;
+  }
+  .seccionTres .form-contacto {
+      max-height: 650px;
+      /* margin-left: auto; */
+  }
+}
+
+@media screen and (max-width:800px) {
+  .seccionTres img {
+      height: 700px;
+  }
+  .seccionTres .form-contacto {
+      margin: 20px;
+      max-width: 90%;
+      max-height: 650px;
+      /* margin-left: auto; */
+  }
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+}
+
+@media screen and (max-width:800px) {
+  .footer-usuarios {
+      flex-direction: column;
+      display: inline;
+      align-items: center;
+  }
+}
+
+.footer-usuarios {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #241F74;
+}
+
+.a-manual-usuario {
+  color: #E6E6E6;
+  font-size: large;
+}
+
+.a-manual-usuario:hover {
+  color: #4136df;
+}
+
+.icon-fontawesome-manual {
+  color: #E6E6E6;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+footer {
+  width: 100%;
+  height: 70px;
+}
+
+footer .terminos {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-weight: bold;
+  /*margin-bottom: 0;*/
+  margin-top: 25px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+footer .redes {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-weight: bold;
+  /*margin-bottom: 0;*/
+  margin-top: 25px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.facebook {
+  margin: 10px;
+}
+
+.instagram {
+  margin: 10px;
+}
+
+.linkedin {
+  margin: 10px;
+}
+
+@media screen and (max-width:750px) {
+  div .terminos {
+      text-align: center;
+      display: block;
+  }
+  div .redes {
+      text-align: center;
+      display: block;
+  }
+}
+
+
+/* Términos y Condiciones*/
+
+div .termsAndconds {
+  padding-top: 20px;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  min-height: 100vh;
+  position: relative;
+}
+
+div .termsAndconds p {
+  text-align: justify;
+}
+
+

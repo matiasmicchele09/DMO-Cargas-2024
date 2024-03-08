@@ -16,19 +16,134 @@
 
       </ul>
       <ul class="navbar-nav">
-          <li class="nav-item"><a href="logIn.html" class="btn btnDador">Ingresar</a></li>
-          <li class="nav-item"><a href="register.html" class="btn btnTranspor">Registrate</a></li>
+          <li class="nav-item"><a href="logIn.html" class="btn">Ingresar</a></li>
+          <li class="nav-item"><a href="register.html" class="btn">Registrate</a></li>
       </ul>
       <!-- </div> -->
     </div>
   </div>
 </nav>
+
+<!-- Welcome -->
 <section class="seccionUno d-flex">
   <img class="img" src="../../assets/images/truck-1.jpg" alt="imagen Section One">
-  <div class="contenedor">
-      <p class="h5Bienvenido text-uppercase text-center font-weight-bold"><b>¡Bienvenidos!</b></p>
-      <p class="subTitulo text-center"><em>Somos tu nueva forma de moverte y mover tu carga</em></p>
+  <div class="contenedor animate__animated animate__fadeInDownBig">
+      <h5 class="tituloParrafo text-uppercase text-center font-weight-bold"><b>Somos tu nueva forma de moverte y mover tu carga!</b></h5>
       <p class="parrafo text-center">Ahora puedes ser más eficiente en tu negocio. Traslada tus cargas a traves de nuestro sistema de oferta y demanda, simplificando las transacciones y los procesos.</p>
       <p class="parrafo text-center font-weight-bold mb-0">¿Aun no te has registrado? Haz click <a href="register.html"><u>Aquí</u></a>.</p>
   </div>
 </section>
+<!-- Information -->
+<section class="seccionDos">
+  <h3 class="text-center m-4 font-weight-bold">¿Eres transportista?</h3>
+      <div class="containerCards animate__animated animate__fadeInLeft">
+              <div class="cardBody card">
+                  <div class="card-body">
+                      <h4 class="cardTitle card-title text-center">Buscá tus cargas</h4>
+                      <img src="../../assets/images/buscar.png" class="m-4" alt="buscar" width="50px" height="50px">
+                      <p class="card-text"><b>Pallets de madera, granos, cereales, alimentos, equipamiento tecnológico y mucho más.</b></p>
+
+                  </div>
+              </div>
+              <div class="cardBody card">
+                  <div class="card-body">
+                      <h4 class="cardTitle card-title text-center">Ofertá por cargas</h4>
+                      <img src="../../assets/images/comentario.png" class="m-4" alt="buscar" width="50px" height="50px">
+                      <p class="card-text"><b>Comunícate con los dadores de carga válidos para operar de manera segura y transparente, sin intermediarios. </b></p>
+                  </div>
+              </div>
+              <div class="cardBody card">
+                  <div class="card-body">
+                      <h4 class="cardTitle card-title">Optimizá tu tiempo</h4>
+                      <img src="../../assets/images/camion.png" class="m-4" alt="buscar" width="50px" height="50px">
+                      <p class="card-text"><b>Reducí tu tiempo osicioso, el costo de mantenimiento de tu vehículo y mejora la calidad de tu tiempo en el viaje. </b></p>
+                  </div>
+              </div>
+      </div>
+
+  <h3 class="text-center m-4 font-weight-bold ">¿Eres dador de carga?</h3>
+
+      <div class="containerCards animate__animated animate__fadeInRightBig">
+              <div class="cardBody card">
+                  <div class="card-body">
+                      <h4 class="cardTitle card-title text-center">Publicá tus cargas </h4>
+                      <img src="../../assets/images/buscar.png" class="m-4" alt="buscar" width="50px" height="50px">
+                      <p class="card-text"><b>Llegá a miles de transportistas todos los días. Reducí el tiempo en stock de tus cargas.</b></p>
+                  </div>
+              </div>
+              <div class="cardBody card">
+                  <div class="card-body">
+                      <h4 class="cardTitle card-title text-center">Conoce el estado de tu carga</h4>
+                      <img src="../../assets/images/calendario.png" class="m-4" alt="buscar" width="50px" height="50px">
+                      <p class="card-text"><b>Para tu tranquilidad vas a saber el estado de tu carga. </b></p>
+                  </div>
+              </div>
+              <div class="cardBody card">
+                  <div class="card-body">
+                      <h4 class="cardTitle card-title text-center">Conseguí tarifas competitivas</h4>
+                      <img src="../../assets/images/dinero.png" class="m-4" alt="buscar" width="50px" height="50px">
+                      <p class="card-text"><b>Encontrá tu transportista más próximo y baja costos operativos y tiempos de negociación.</b></p>
+                  </div>
+              </div>
+      </div>
+</section>
+<!-- Contact -->
+<section class="seccionTres">
+  <!-- <img class="img" src="assets/img/section-contact.png" alt="imagen Section Three"> -->
+  <div class="container">
+
+      <form autocomplete="off" class="form-contacto card-img-overlay" id="contacto">
+          <div class="form-group row m-3">
+              <h3 class="ml-3 mt-1" style="color: #241F74">Contactanos</h3><br>
+              <p class="ml-3" style="color: #241F74"> <b>Dejanos tu mensaje y nos pondremos en contacto contigo </b></p>
+              <div class="col-12 col-lg-6 col-xl-6">
+                  <label class="font-weight-bold" style="color: #241F74"><b>Nombre/Empresa</b></label>
+                  <input type="text " class="nom form-control" placeholder="Ej. Juan Perez/Rosario SRL" formControlName="nombre">
+              </div>
+              <div class="col-12 col-lg-6 col-xl-6">
+                  <label class="font-weight-bold" style="color: #241F74"> <b>Email</b></label>
+                  <input type="email " class="e-mail form-control" placeholder="Ej. jperez@gmail.com" formControlName="correo">
+              </div>
+          </div>
+
+          <div class="form-group row m-3">
+              <div class="col-12 col-lg-3 col-xl-3">
+                  <label class="font-weight-bold" style="color: #241F74"> <b>Dirección</b></label>
+                  <input type="text" class="dir form-control" placeholder="Ej. Corrientes 233" formControlName="calleNum">
+              </div>
+              <div class="col-12 col-lg-3 col-xl-3">
+                  <label class="font-weight-bold" style="color: #241F74"> <b>Ciudad</b></label>
+                  <input type="text" class="ciu form-control" placeholder="Ej. Rosario" formControlName="ciudad">
+              </div>
+              <div class="col-12 col-lg-6 col-xl-6">
+                  <label class="font-weight-bold" style="color: #241F74"> <b>Teléfono</b></label>
+                  <input type="text " class="tel form-control" placeholder="Ej. 341 - 689752" formControlName="telefono">
+              </div>
+          </div>
+
+          <div class="form-group row m-3">
+              <div class="col-12">
+                  <label class="font-weight-bold" style="color: #241F74"> <b>Mensaje</b></label>
+                  <textarea name="mensaje " id="mensaje " class="mensj form-control" placeholder="Escriba aquí su mensaje" style="resize:none;"></textarea>
+              </div>
+          </div>
+
+          <div class="botonEnviar">
+              <button class="btn btnEnviaForm" type="submit">Enviar</button>
+          </div>
+      </form>
+
+  </div>
+</section>
+
+<!-- <footer>
+  <div class="contenedor d-flex">
+      <p class="terminos"><a href="terms_conds.html" target="_blank">Términos y condiciones</a>
+           | <a href="#">Política de privacidad</a></p>
+          <p class="redes">También encontrarnos en:
+              <a href="https://www.facebook.com" class="facebook"><img src="assets/img/facebook.png" alt="facebook image" width="20px" height="20px"></a>
+              <a href="https://www.instagram.com" class="instagram"><img src="assets/img/instagram.png" alt="instagram image" width="20px" height="20px"></a>
+              <a href="https://www.linkedin.com" class="linkedin"><img src="assets/img/linkedin.png" alt="linkedin image" width="20px" height="20px"></a>
+          </p>
+  </div>
+</footer> -->
