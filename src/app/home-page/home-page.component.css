@@ -1,0 +1,23 @@
+.seccionUno {
+  text-align: center;
+  position: relative;
+  /*padding-top: 65px;*/
+}
+.seccionUno img {
+  width: 100%;
+  min-height: 400px;
+}
+.seccionUno .contenedor {
+  position: absolute;
+  width: 700px;
+  height: auto;
+  font-family: Helvetica;
+  color: #241F74;
+  background-color: #FAFAFA;
+  opacity: 85%;
+  padding: 20px;
+  border-radius: 20px;
+  margin-left: 70px;
+  margin-top: 10%;
+  border: solid;
+}
