@@ -84,11 +84,15 @@
 }
 
 /* Information */
+.seccionDos h3{
+  /* color: #DC7633; */
+  /*text-shadow: -5px 0px 7px #000000;*/
+}
 .seccionDos .containerCards {
   margin: 0 20px 0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px; /* Espacio entre las cajas */
+  gap: 60px; /* Espacio entre las cajas */
   justify-content: center; /* Centra las columnas horizontalmente */
   align-items: center; /* Centra las filas verticalmente */
 }
@@ -103,8 +107,12 @@
 
 .seccionDos .cardTitle {
   font-weight: bold;
-  color: #34495E;
+  /* color: #DC7633; #34495E; */
   text-align: unset;
+}
+
+.seccionDos .cardBody p {
+  /* color: #DC7633; */
 }
 
 @media screen and (max-width: 1000px) {
@@ -131,25 +139,6 @@
 /* -----------------------------------------------------------------------------------------------------
 ------------------------------------- Sección Tres - Contacto ------------------------------------------
 ----------------------------------------------------------------------------------------------------- */
-
-.seccionTres {
-  position: relative;
-  margin: 0px;
-  padding: 0px;
-  background-color: black;
-}
-
-
-/* .seccionTres .tarjeta {
-  margin: 30px 15px 15px 0;
-  margin-left: auto;
-} */
-
-.seccionTres img {
-  width: 100%;
-  min-height: 500px;
-}
-
 .seccionTres form .nom,
 .e-mail,
 .tel,
@@ -161,28 +150,25 @@
 }
 
 .seccionTres .form-contacto {
-  max-width: 50%;
-  margin: 30px 15px 15px 0;
-  max-height: 450px;
-  margin-left: auto;
-  padding: 10px;
-  border-radius: 15px;
-  border: solid;
-  border-color: #241F74;
-  background-color: #FAFAFA;
-  opacity: 95%;
+  /* max-width: 50%; */
+  /* max-height: 450px; */
 }
 
+.formulario{
+  display: flex;
+  justify-content:center ;
+}
 .seccionTres form .botonEnviar {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .seccionTres form .btnEnviaForm {
-  background: #241F74;
-  color: #FAFAFA;
-  padding-left: 7%;
-  padding-right: 7%;
+  background-color: #ffffff;
+  color: #000000;
+  /* padding-left: 7%;
+  padding-right: 7%; */
 }
 
 .seccionTres form .btnEnviaForm:hover {
@@ -247,10 +233,12 @@
   margin-right: 10px;
 }
 
-footer {
-  width: 100%;
-  height: 70px;
+footer span{
+  /* width: 100%;
+  height: 70px; */
+  margin-left: 20px;
 }
+
 
 footer .terminos {
   /* font-family: Arial, Helvetica, sans-serif; */
@@ -292,19 +280,4 @@ footer .redes {
       display: block;
   }
 }
-
-
-/* Términos y Condiciones*/
-
-div .termsAndconds {
-  padding-top: 20px;
-  /* font-family: Arial, Helvetica, sans-serif; */
-  min-height: 100vh;
-  position: relative;
-}
-
-div .termsAndconds p {
-  text-align: justify;
-}
-
 
