@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path:'home', component: HomePageComponent
   },
+  {
+    path: 'auth',
+    loadChildren: ()=> import('./auth/auth.module').then(m=>m.AuthModule)
+  },
   { //Cualquier otra ruta que no este definida en mi routing module quiero que redirija a home
     path:'**', redirectTo: 'home'
   }
