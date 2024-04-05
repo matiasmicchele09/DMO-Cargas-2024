@@ -10,25 +10,24 @@ import { Observable, map, tap } from 'rxjs';
 export class AuthService {
 
   private baseUrl = enviroments.baseUrl;
-  //private user?: User; //*Esta opcional (?) porque en un punto del tiempo no va a existir. Cuando la aplicación se carga por primera vez no va a existir.
-  private userKey = 'currentUser'
+  private user?: User; //*Esta opcional (?) porque en un punto del tiempo no va a existir. Cuando la aplicación se carga por primera vez no va a existir.
 
-  constructor(private http: HttpClient) { }
-
-    //*Hacemos un getter para que se pueda acceder al usuario desde fuera del servicio
-  get currentUser():User | undefined{
-    const userString = localStorage.getItem(this.userKey)
-    //if (!this.user) return undefined;
-    //console.log(this.user);
-    //return this.user
-    //return structuredClone(this.user);
-    return userString ? JSON.parse(userString) : undefined;
+  constructor(private http: HttpClient) {
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser){
+      this.user = JSON.parse(storedUser);
+    }
   }
 
+  //*Hacemos un getter para que se pueda acceder al usuario desde fuera del servicio
+  get currentUser():User | undefined{
+    return this.user
+  }
 
   set setCurrentUser(user: User) {
     console.log(user);
-    //this.user = user;
+    this.user = user;
+    localStorage.setItem("currentUser", JSON.stringify(user))
   }
 
   login(email:string, password: string):Observable<User>{
@@ -37,11 +36,7 @@ export class AuthService {
     return this.http.post<User>(url, body)
     .pipe(
       tap(user => {
-        ///this.user = user;
-        //setCurrentUser(user);
-        //localStorage.setItem("usuario",JSON.stringify(this.user))
-        localStorage.setItem('token', 'sdfgaADasdfaASDFAdDsasdFADafa')
-      //  console.log(user);
+        this.setCurrentUser = user;
         //localStorage.setItem('token', 'sdfgaADasdfaASDFAdDsasdFADafa')
       })
     )

@@ -11,20 +11,19 @@ export class DashboardComponent implements OnInit{
 
   constructor(private authService: AuthService){}
 
-  mail?: string;
-  userDash?: any;
-
-  get user():User|undefined{
+  //! ACA ESTA EL TEMA, SI PONGO QUE SEA DE TIPO USER ME DICE QUE ES UNDEFINED, AL PONER ANY SE ARREGLÓ.
+  //! VER COMO LO PUEDO SOLUCIONAR.
+  get user():any|undefined{
     return this.authService.currentUser;
 
   }
   ngOnInit(): void {
-    console.log("en Dash", this.user);
-   //this.userDash = JSON.parse(localStorage.getItem(this))
-  //  console.log(localStorage.getItem("usuario"));
-  //   console.log(this.userDash);
-  //   console.log(this.userDash.cod_usuario);
-  //  this.mail = this.userDash?.email
+
+    if (this.user) {
+      this.user[0].email
+      console.log("aca", this.user[0].email);
+      ;
+    }
   }
 
 
