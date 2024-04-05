@@ -4,14 +4,18 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {
-    path:'home', component: HomePageComponent
+    path:'', component: HomePageComponent
   },
   {
     path: 'auth',
     loadChildren: ()=> import('./auth/auth.module').then(m=>m.AuthModule)
   },
+  {
+    path: 'dashboard',
+    loadChildren: ()=> import('./dmo-cargas/dmo-cargas.module').then(m=>m.DmoCargasModule)
+  },
   { //Cualquier otra ruta que no este definida en mi routing module quiero que redirija a home
-    path:'**', redirectTo: 'home'
+    path:'**', redirectTo: ''
   }
 ];
 
