@@ -36,9 +36,17 @@ export class AuthService {
     return this.http.post<User>(url, body)
     .pipe(
       tap(user => {
+        console.log("user en authService", user);
+        console.log("type", typeof user);
         this.setCurrentUser = user;
         //localStorage.setItem('token', 'sdfgaADasdfaASDFAdDsasdFADafa')
       })
     )
+  }
+
+  logOut():void{
+    this.user = undefined;
+    localStorage.clear();
+
   }
 }
