@@ -40,6 +40,7 @@ export class AuthService {
       tap(user => {
         console.log("user en authService", user);
         console.log("type", typeof user);
+        console.log(this.setCurrentUser[0]);
         this.setCurrentUser[0] = user;
         //localStorage.setItem('token', 'sdfgaADasdfaASDFAdDsasdFADafa')
       })

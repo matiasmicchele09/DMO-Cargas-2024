@@ -13,7 +13,6 @@ export class LoginPageComponent {
 
   private fb = inject(FormBuilder);
   private router = inject( Router );
-  //user?:User;
 
   public myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

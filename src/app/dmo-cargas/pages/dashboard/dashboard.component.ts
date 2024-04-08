@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit{
 
   mail?:string;
-  currentUSer?: User;
+  currentUser?: User;
 
   constructor(private authService: AuthService,
               private router: Router){}
@@ -20,13 +20,13 @@ export class DashboardComponent implements OnInit{
   get user():User[]|undefined{
     return this.authService.currentUser;
   }
-
   ngOnInit(): void {
+
 
     if (this.user && this.user.length > 0) {
   this.mail = this.user[0].email
-  this.currentUSer = this.user[0]
-      console.log(this.user, typeof this.currentUSer);
+  this.currentUser = this.user[0]
+      console.log(this.user, typeof this.currentUser);
     }
 
 

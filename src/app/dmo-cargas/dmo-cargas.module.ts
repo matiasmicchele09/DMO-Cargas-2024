@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DmoCargasRoutingModule } from './dmo-cargas-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TrucksComponent } from './pages/trucks/trucks.component';
+import { LayoutComponent } from './pages/layout/layout.component';
 
 
 
@@ -10,9 +12,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavbarComponent
-
-
+    NavbarComponent,
+    TrucksComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,

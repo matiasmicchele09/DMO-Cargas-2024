@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: ()=> import('./dmo-cargas/dmo-cargas.module').then(m=>m.DmoCargasModule)
   },
   { //Cualquier otra ruta que no este definida en mi routing module quiero que redirija a home
-    path:'**', redirectTo: ''
+    path:'**', redirectTo: 'home'
   }
 ];
 

@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
-<p>Email: {{user}}</p>
+<app-navbar [user]="currentUser"></app-navbar>
+<p>{{currentUser?.cod_usuario}}</p>
 <br>
 <br>
 <br>
@@ -7,9 +7,9 @@
 
 <button class="login100-form-btn"
         type="submit"
+        style="background-color: black;"
         (click)="onLogOut()">
         LogOut
 </button>
 <br>
 <br>
-<span>{{user}}</span>
