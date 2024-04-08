@@ -10,19 +10,28 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit{
 
+  mail?:string;
+  currentUSer?: User;
+
   constructor(private authService: AuthService,
               private router: Router){}
 
-  //! ACA ESTA EL TEMA, SI PONGO QUE SEA DE TIPO USER ME DICE QUE ES UNDEFINED, AL PONER ANY SE ARREGLÓ.
-  //! VER COMO LO PUEDO SOLUCIONAR.
-  get user():any|undefined{
-    return this.authService.currentUser;
 
+  get user():User[]|undefined{
+    return this.authService.currentUser;
   }
+
   ngOnInit(): void {
 
+    if (this.user && this.user.length > 0) {
+  this.mail = this.user[0].email
+  this.currentUSer = this.user[0]
+      console.log(this.user, typeof this.currentUSer);
+    }
+
+
     if (this.user) {
-      this.user[0].email;
+      //this.user[0].email;
     }
   }
 
