@@ -21,16 +21,16 @@ export class LoginPageComponent {
 
   constructor(private authService: AuthService){}
 
-  get user():User[] | undefined{
-    return this.authService.currentUser;
-  }
+  // get user():User[] | undefined{
+  //   return this.authService.currentUser;
+  // }
 
   login(){
     const { email, password } = this.myForm.value;
 
     this.authService.login(email, password) //el login es el observable, ya que devuelve un obj. observable
     .subscribe({
-      next: () => this.router.navigateByUrl('dashboard') //* o tambien --> this.router.navigate(['/dashboard']);
+      next: () => this.router.navigateByUrl('dmo') //* o tambien --> this.router.navigate(['/dashboard']);
       //* El next sería el observer
       //     error: (message) => {    //       Swal.fire('Error', message, 'error' )    //     }
     })

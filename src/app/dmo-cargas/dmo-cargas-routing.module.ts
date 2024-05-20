@@ -7,13 +7,13 @@ import { LayoutComponent } from './pages/layout/layout.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
-    //children: [
-      //{ path: 'dashboard', component: DashboardComponent },
-      //{ path: 'mis-camiones', component: TrucksComponent },
+    component: LayoutComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'mis-camiones', component: TrucksComponent },
       /*{ path: 'register', component: },*/
-      //{ path: '**', redirectTo: '' }
-    //]
+      { path: '**', redirectTo: 'dashboard' }
+    ]
   }
 ];
 

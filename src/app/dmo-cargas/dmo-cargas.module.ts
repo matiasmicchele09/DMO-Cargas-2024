@@ -18,7 +18,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
   ],
   imports: [
     CommonModule,
-    DmoCargasRoutingModule
+    DmoCargasRoutingModule,
   ]
 })
 export class DmoCargasModule { }

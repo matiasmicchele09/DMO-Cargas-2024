@@ -10,46 +10,45 @@ import { Observable, map, tap } from 'rxjs';
 export class AuthService {
 
   private baseUrl = enviroments.baseUrl;
-  private user?: User[]; //*Esta opcional (?) porque en un punto del tiempo no va a existir. Cuando la aplicación se carga por primera vez no va a existir.
-//private user?: User[];
+  private user?: User; //*Esta opcional (?) porque en un punto del tiempo no va a existir. Cuando la aplicación se carga por primera vez no va a existir.
+
   constructor(private http: HttpClient) {
     const storedUser = localStorage.getItem('currentUser');
+
     if (storedUser){
       this.user = JSON.parse(storedUser);
     }
   }
 
   //*Hacemos un getter para que se pueda acceder al usuario desde fuera del servicio
-  get currentUser():User[] | undefined{
-    //return this.user
+  get currentUser():User | undefined{
     if (!this.user) return undefined;
     return structuredClone(this.user);
   }
 
-  set setCurrentUser(user: User[]) {
-    console.log(user);
-    this.user = user;
-    localStorage.setItem("currentUser", JSON.stringify(user))
-  }
+  // set setCurrentUser(user: User[]) {
+  //   console.log(user);
+  //   this.user = user;
+  //   localStorage.setItem("currentUser", JSON.stringify(user))
+  // }
 
-  login(email:string, password: string):Observable<User>{
+  login(email:string, password: string):Observable<User[]>{
     const url = `${ this.baseUrl }/logIn`;
     const body = { email, password };
-    return this.http.post<User>(url, body)
+    return this.http.post<User[]>(url, body)
     .pipe(
       tap(user => {
-        console.log("user en authService", user);
+        console.log("user en authService", user[0]);
         console.log("type", typeof user);
-        console.log(this.setCurrentUser[0]);
-        this.setCurrentUser[0] = user;
+        localStorage.setItem("currentUser", JSON.stringify(user[0]))
+        //this.setCurrentUser(user);
+        /*console.log(this.setCurrentUser[0]);*/
         //localStorage.setItem('token', 'sdfgaADasdfaASDFAdDsasdFADafa')
       })
     )
   }
 
   logOut():void{
-    //this.user = undefined;
     localStorage.clear();
-
   }
 }
