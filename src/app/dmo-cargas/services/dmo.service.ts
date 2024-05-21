@@ -15,17 +15,14 @@ export class DmoService {
 
 
 
-  getTrucks(idUser:any):Observable<any>{
+  getTrucks(idUser:string):Observable<any>{
     const url = `${ this.baseUrl }/getTrucksUser/${idUser}`;
     const body = { idUser };
     console.log(url);
     console.log(body);
 
-    return this.http.post<any>(url, body)
-    .pipe(
-      tap(user => {
-        console.log("en el dmoservice", user)}
-    ))
+    return this.http.get<any>(url);
+
   }
 
 

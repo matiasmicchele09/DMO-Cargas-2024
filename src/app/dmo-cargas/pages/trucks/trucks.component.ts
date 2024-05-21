@@ -12,8 +12,13 @@ export class TrucksComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.dmoService.getTrucks(1)
-  }
+    this.dmoService.getTrucks("1")
+    .subscribe(
+      truck =>{
+        console.log(truck);
+
+    })
+}
 
 
 
