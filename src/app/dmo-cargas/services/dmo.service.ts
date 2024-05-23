@@ -15,18 +15,22 @@ export class DmoService {
 
 
 
+  //* Camiones del usuario
   getTrucks(idUser:number):Observable<any>{
     const url = `${ this.baseUrl }/getTrucksUser/${idUser}`;
-    const body = { idUser };
     return this.http.get<any>(url);
   }
 
+  //* Tipo de camiones del usuario
   getTypeTruck(codTypeTruck: number): Observable<any>{
     const url = `${ this.baseUrl }/getOneTypeTruck/${codTypeTruck}`;
-    const body = { codTypeTruck };
     return this.http.get<any>(url);
-
   }
 
+  //* Carrocerías del usuario
+  getCarrocerias(idUser: number): Observable<any>{
+    const url = `${ this.baseUrl }/getCarroceriasUser/${idUser}`;
+    return this.http.get<any>(url);
+  }
 
 }

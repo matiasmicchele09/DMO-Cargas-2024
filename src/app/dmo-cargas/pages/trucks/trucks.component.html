@@ -1,8 +1,8 @@
 <div class="container m-5">
   <div class="row">
     <div class="col mb-3">
-
       <button type="button" class="btn btn-primary" style="margin-right: 10px;">Agregar Camión</button>
+      <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Editar Camión</button>
       <button type="button" class="btn btn-danger">Eliminar Camión</button>
     </div>
   </div>
@@ -24,6 +24,36 @@
           <td>{{truck.modelo}}</td>
           <td>{{truck.anio}}</td>
           <td>{{truck.patente_camion}}</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mb-3">
+      <button type="button" class="btn btn-primary" style="margin-right: 10px;">Agregar Carroceria</button>
+      <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Editar Carroceria</button>
+      <button type="button" class="btn btn-danger">Eliminar Carroceria</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-dark table-striped-columns">
+        <thead>
+        <tr>
+          <th>Patente</th>
+          <th>Cant. Ejes</th>
+          <th>Año</th>
+          <th>Carroceria</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let carroceria of carrocerias">
+          <td>{{carroceria.patente_carroceria}}</td>
+          <td>{{carroceria.cant_ejes}}</td>
+          <td>{{carroceria.anio}}</td>
+          <td>{{carroceria.patente_carroceria}}</td>
         </tr>
       </tbody>
       </table>

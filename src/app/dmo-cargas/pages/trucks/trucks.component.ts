@@ -11,6 +11,7 @@ import { User } from 'src/app/auth/interfaces/user.interface';
 export class TrucksComponent implements OnInit{
 
   public trucks:any[] = [];
+  public carrocerias:any[] = [];
 
   constructor(private dmoService: DmoService,
               private authService: AuthService){}
@@ -21,17 +22,24 @@ export class TrucksComponent implements OnInit{
   ngOnInit(): void {
 
     console.log(this.user!.cod_usuario);
+
     this.dmoService.getTrucks(this.user!.cod_usuario)
     .subscribe(
       truck =>{
                 console.log(truck[0]);
         this.trucks = truck;
         this.dmoService.getTypeTruck(truck[0].cod_tipo_camion)
-        .subscribe(truck=>{
-          console.log(truck);
+        .subscribe(type=>{
+          console.log(type);
         })
-    })
 
+      })
+
+      this.dmoService.getCarrocerias(this.user!.cod_usuario)
+      .subscribe(carroceria=>{
+        console.log(carroceria);
+        this.carrocerias = carroceria;
+      })
 
 
 }
