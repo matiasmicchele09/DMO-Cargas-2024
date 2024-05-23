@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DmoService } from '../../services/dmo.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { User } from 'src/app/auth/interfaces/user.interface';
 
 @Component({
   selector: 'app-trucks',
@@ -8,16 +10,30 @@ import { DmoService } from '../../services/dmo.service';
 })
 export class TrucksComponent implements OnInit{
 
-  constructor(private dmoService: DmoService){}
+  public trucks:any[] = [];
 
+  constructor(private dmoService: DmoService,
+              private authService: AuthService){}
+
+  get user():User | undefined{
+    return this.authService.currentUser
+  }
   ngOnInit(): void {
 
-    this.dmoService.getTrucks("1")
+    console.log(this.user!.cod_usuario);
+    this.dmoService.getTrucks(this.user!.cod_usuario)
     .subscribe(
       truck =>{
-        console.log(truck);
-
+                console.log(truck[0]);
+        this.trucks = truck;
+        this.dmoService.getTypeTruck(truck[0].cod_tipo_camion)
+        .subscribe(truck=>{
+          console.log(truck);
+        })
     })
+
+
+
 }
 
 

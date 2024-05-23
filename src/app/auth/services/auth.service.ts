@@ -49,6 +49,7 @@ export class AuthService {
   }
 
   logOut():void{
+    //this.currentUser = undefined;
     localStorage.clear();
   }
 }

@@ -15,12 +15,15 @@ export class DmoService {
 
 
 
-  getTrucks(idUser:string):Observable<any>{
+  getTrucks(idUser:number):Observable<any>{
     const url = `${ this.baseUrl }/getTrucksUser/${idUser}`;
     const body = { idUser };
-    console.log(url);
-    console.log(body);
+    return this.http.get<any>(url);
+  }
 
+  getTypeTruck(codTypeTruck: number): Observable<any>{
+    const url = `${ this.baseUrl }/getOneTypeTruck/${codTypeTruck}`;
+    const body = { codTypeTruck };
     return this.http.get<any>(url);
 
   }
