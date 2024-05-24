@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { enviroments } from 'src/environments/environments';
 
-import { Observable, map, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,19 @@ export class DmoService {
   getCarrocerias(idUser: number): Observable<any>{
     const url = `${ this.baseUrl }/getCarroceriasUser/${idUser}`;
     return this.http.get<any>(url);
+  }
+
+  //* Eliminar un camión
+  deleteTruckById(patente:string, eliminado: boolean): Observable<boolean>{
+    const body = {patente, eliminado}
+    const headers = {}
+    console.log(body);
+    return this.http.put(`${this.baseUrl}/logicDeleteTruck`, {patente, eliminado})
+    //delete(`${this.baseUrl}/logicDeleteTruck`, {body: body})
+    .pipe(
+      catchError(() => of(false)),
+      map(() => true)
+    )
   }
 
 }
