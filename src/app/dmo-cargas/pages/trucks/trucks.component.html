@@ -1,9 +1,11 @@
 <div class="container m-5">
   <div class="row">
     <div class="col mb-3">
-      <button type="button" class="btn btn-primary" style="margin-right: 10px;">Agregar Camión</button>
-      <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Editar Camión</button>
-      <button type="button" class="btn btn-danger">Eliminar Camión</button>
+      <h5>Mis camiones <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome" style="color: #06a273;"></i></h5>
+
+      <!-- <button type="button" class="btn btn-primary" style="margin-right: 10px;">Agregar Camión</button> -->
+      <!-- <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Editar Camión</button>
+      <button type="button" class="btn btn-danger">Eliminar Camión</button> -->
     </div>
   </div>
   <div class="row">
@@ -11,6 +13,7 @@
       <table class="table table-dark table-striped-columns">
         <thead>
         <tr>
+          <th style="width: 70px;"></th>
           <th>Marca</th>
           <th>Modelo</th>
           <th>Año</th>
@@ -20,10 +23,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let truck of trucks">
+          <td>
+            <i class="fa-solid fa-trash icon-fontawesome" style="color: #e20000;"(click)="onDeleteCamion(truck)"></i>
+            <i class="fa-solid fa-pen-to-square icon-fontawesome" style="color: #0528ee; margin-left: 20px;"></i>
+          </td>
           <td>{{truck.marca}}</td>
           <td>{{truck.modelo}}</td>
           <td>{{truck.anio}}</td>
           <td>{{truck.patente_camion}}</td>
+          <td>{{truck.descTipoCamion}}</td>
         </tr>
       </tbody>
       </table>
@@ -32,8 +40,8 @@
   <div class="row">
     <div class="col mb-3">
       <button type="button" class="btn btn-primary" style="margin-right: 10px;">Agregar Carroceria</button>
-      <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Editar Carroceria</button>
-      <button type="button" class="btn btn-danger" (click)="onDeleteCamion()">Eliminar Carroceria</button>
+      <!-- <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Editar Carroceria</button>
+      <button type="button" class="btn btn-danger" (click)="onDeleteCamion()">Eliminar Carroceria</button> -->
     </div>
   </div>
   <div class="row">

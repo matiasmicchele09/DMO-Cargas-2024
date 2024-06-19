@@ -27,6 +27,12 @@ export class DmoService {
     return this.http.get<any>(url);
   }
 
+  //* Todos los tipos de camiones
+  getAllTypeTruck():Observable<any>{
+    const url = `${ this.baseUrl }/getAllTypeTruck`;
+    return this.http.get<any>(url);
+  }
+
   //* Carrocerías del usuario
   getCarrocerias(idUser: number): Observable<any>{
     const url = `${ this.baseUrl }/getCarroceriasUser/${idUser}`;
@@ -34,11 +40,11 @@ export class DmoService {
   }
 
   //* Eliminar un camión
-  deleteTruckById(patente:string, eliminado: boolean): Observable<boolean>{
-    const body = {patente, eliminado}
-    const headers = {}
+  deleteTruckById(patente_camion:string, eliminado: boolean): Observable<boolean>{
+    const body = {patente_camion, eliminado}
     console.log(body);
-    return this.http.put(`${this.baseUrl}/logicDeleteTruck`, {patente, eliminado})
+
+    return this.http.put(`${this.baseUrl}/logicDeleteTruck`, {patente_camion, eliminado})
     //delete(`${this.baseUrl}/logicDeleteTruck`, {body: body})
     .pipe(
       catchError(() => of(false)),
