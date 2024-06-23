@@ -1,6 +1,8 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
+/** Angular MATERIAL  */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
@@ -15,7 +17,6 @@ body, html {
     height: 100%;
     font-family: 'Oswald';
 }
-
 /*---------------------------------------------*/
 a {
     font-family: 'Oswald';
@@ -2882,3 +2883,6 @@ flex-direction: column;
 -ms-align-items: center;
 align-items: center;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

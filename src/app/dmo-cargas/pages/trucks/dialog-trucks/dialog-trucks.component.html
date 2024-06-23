@@ -1,0 +1,97 @@
+<!-- <h2 mat-dialog-title>{{truck.marca}} - {{truck.patente_camion}}</h2>
+
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button>No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</mat-dialog-actions> -->
+<h2 mat-dialog-title>{{title}}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+    <!-- Patente -->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Patente</label>
+        <div class="col-sm-9">
+            <input class="form-control"
+                   formControlName="patente"
+                   placeholder="">
+            <span *ngIf=""
+                  class="form-text text-danger">
+
+            </span>
+            <!-- isValidField('name')
+             {{ getFieldError('name') }}-->
+        </div>
+    </div>
+
+    <!-- Marca -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Marca</label>
+      <div class="col-sm-9">
+          <input class="form-control"
+                 formControlName="marca"
+                 placeholder="">
+          <span *ngIf=""
+                class="form-text text-danger">
+
+          </span>
+          <!-- isValidField('name')
+           {{ getFieldError('name') }}-->
+      </div>
+  </div>
+
+  <!-- Modelo -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Modelo</label>
+    <div class="col-sm-9">
+        <input class="form-control"
+               formControlName="modelo"
+               placeholder="">
+        <span *ngIf=""
+              class="form-text text-danger">
+
+        </span>
+        <!-- isValidField('name')
+         {{ getFieldError('name') }}-->
+    </div>
+  </div>
+
+  <!-- Anio -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Año</label>
+    <div class="col-sm-9">
+        <input class="form-control"
+               formControlName="anio"
+               placeholder="">
+        <span *ngIf=""
+              class="form-text text-danger">
+
+        </span>
+        <!-- isValidField('name')
+         {{ getFieldError('name') }}-->
+    </div>
+  </div>
+  <!-- Descripción -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Descripción</label>
+    <div class="col-sm-9">
+        <input class="form-control"
+               formControlName="desc"
+               placeholder="">
+        <span *ngIf=""
+              class="form-text text-danger">
+
+        </span>
+        <!-- isValidField('name')
+         {{ getFieldError('name') }}-->
+    </div>
+  </div>
+</form>
+</mat-dialog-content>

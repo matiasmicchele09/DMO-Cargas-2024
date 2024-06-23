@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { User } from 'src/app/auth/interfaces/user.interface';
 import { TiposCamiones } from '../../interfaces/tiposCamiones.interface';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogTrucksComponent } from './dialog-trucks/dialog-trucks.component';
 @Component({
   selector: 'app-trucks',
   templateUrl: './trucks.component.html',
@@ -16,7 +18,8 @@ export class TrucksComponent implements OnInit{
   public typesTrucks:TiposCamiones[] = [];
 
   constructor(private dmoService: DmoService,
-              private authService: AuthService){}
+              private authService: AuthService,
+              private dialog: MatDialog){}
 
   get user():User | undefined{
     return this.authService.currentUser
@@ -75,4 +78,19 @@ export class TrucksComponent implements OnInit{
       }
     });
   }
+
+  openDialog(truck:any, esAlta:boolean): void {
+    console.log(truck);
+    const dialogRef = this.dialog.open(DialogTrucksComponent,
+      { data: {truck,
+               confirm: esAlta
+              },
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
+  }
 }
+
