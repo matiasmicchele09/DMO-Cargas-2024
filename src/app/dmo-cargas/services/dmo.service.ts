@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { enviroments } from 'src/environments/environments';
 
 import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Camiones } from '../interfaces/camiones.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,6 @@ export class DmoService {
   private baseUrl = enviroments.baseUrl;
 
   constructor(private http: HttpClient){}
-
-
 
   //* Camiones del usuario
   getTrucks(idUser:number):Observable<any>{
@@ -50,6 +49,19 @@ export class DmoService {
       catchError(() => of(false)),
       map(() => true)
     )
+  }
+
+  //* Editar un camión
+  updateTruck(truck: Camiones): Observable<boolean>{
+    const body = truck;
+    console.log(body);
+    return this.http.put(`${this.baseUrl}/update_truck`, truck)
+    //delete(`${this.baseUrl}/logicDeleteTruck`, {body: body})
+    .pipe(
+      catchError(() => of(false)),
+      map(() => true)
+    )
+
   }
 
 }

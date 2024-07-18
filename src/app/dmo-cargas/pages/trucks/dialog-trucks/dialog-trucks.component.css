@@ -1,0 +1,5 @@
+.form-truck{
+  display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas, la segunda más ancha */
+    grid-gap: 10px; /* Espacio entre los elementos */
+}

@@ -1,8 +1,12 @@
 <div class="container m-5">
   <div class="row">
     <div class="col mb-3">
-      <h5>Mis camiones <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome" style="color: #06a273;" title="Agregar Camión"></i></h5>
-
+      <h5>Mis camiones
+        <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome"
+           style="color: #06a273;"
+           title="Agregar Camión">
+        </i>
+      </h5>
     </div>
   </div>
   <div class="row">
@@ -21,8 +25,14 @@
       <tbody>
         <tr *ngFor="let truck of trucks">
           <td>
-            <i class="fa-solid fa-trash icon-fontawesome" style="color: #e20000;" title="Eliminar Camión" (click)="onDeleteCamion(truck)"></i>
-            <i class="fa-solid fa-pen-to-square icon-fontawesome" style="color: #0528ee; margin-left: 20px;" title="Editar Camión" (click)="openDialog(truck, false)"></i>
+            <i class="fa-solid fa-trash icon-fontawesome"
+               style="color: #e20000;" title="Eliminar Camión"
+               (click)="onDeleteCamion(truck)">
+            </i>
+            <i class="fa-solid fa-pen-to-square icon-fontawesome"
+               style="color: #0528ee; margin-left: 20px;"
+               title="Editar Camión"
+               (click)="openDialog(truck, false)"></i>
           </td>
           <td>{{truck.marca}}</td>
           <td>{{truck.modelo}}</td>

@@ -83,6 +83,7 @@ export class TrucksComponent implements OnInit{
     console.log(truck);
     const dialogRef = this.dialog.open(DialogTrucksComponent,
       { data: {truck,
+               types: this.typesTrucks,
                confirm: esAlta
               },
       });

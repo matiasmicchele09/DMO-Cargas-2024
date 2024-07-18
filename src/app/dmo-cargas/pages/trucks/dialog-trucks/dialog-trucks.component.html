@@ -10,88 +10,116 @@
   <button mat-button>No Thanks</button>
   <button mat-button cdkFocusInitial>Ok</button>
 </mat-dialog-actions> -->
-<h2 mat-dialog-title>{{title}}</h2>
+<h2 mat-dialog-title class="mb-3">{{title}}</h2>
 
 <mat-dialog-content>
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
 
-    <!-- Patente -->
-    <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Patente</label>
+    <div class="form-truck">
+      <!-- Patente -->
+      <div class="mt-2 mb-3 row">
+          <label class="col-sm-3 col-form-label">Patente</label>
+          <div class="col-sm-9">
+              <input class="form-control"
+                    formControlName="patente_camion"
+                    placeholder="">
+              <span *ngIf="isValidField('patente_camion')"
+                    class="form-text text-danger">
+                     {{ getFieldError('patente') }}
+              </span>
+          </div>
+      </div>
+
+      <!-- Marca -->
+      <div class="mt-2 mb-3 row">
+        <label class="col-sm-3 col-form-label">Marca</label>
         <div class="col-sm-9">
             <input class="form-control"
-                   formControlName="patente"
-                   placeholder="">
-            <span *ngIf=""
+                  formControlName="marca"
+                  placeholder="">
+            <span *ngIf="isValidField('marca')"
                   class="form-text text-danger">
-
+                   {{ getFieldError('marca') }}
             </span>
-            <!-- isValidField('name')
-             {{ getFieldError('name') }}-->
         </div>
     </div>
 
-    <!-- Marca -->
+    <!-- Modelo -->
     <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Marca</label>
+      <label class="col-sm-3 col-form-label">Modelo</label>
       <div class="col-sm-9">
           <input class="form-control"
-                 formControlName="marca"
-                 placeholder="">
+                formControlName="modelo"
+                placeholder="">
+          <span *ngIf="isValidField('modelo')"
+                class="form-text text-danger">
+                 {{ getFieldError('modelo') }}
+          </span>
+      </div>
+    </div>
+
+    <!-- Anio -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Año</label>
+      <div class="col-sm-9">
+          <input class="form-control"
+                formControlName="anio"
+                placeholder="">
+          <span *ngIf="isValidField('anio')"
+                class="form-text text-danger">
+                 {{ getFieldError('anio') }}
+          </span>
+      </div>
+    </div>
+    <!-- Descripción -->
+    <!-- <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Descripción</label>
+      <div class="col-sm-9">
+          <input class="form-control"
+                formControlName="desc"
+                placeholder="">
           <span *ngIf=""
                 class="form-text text-danger">
 
           </span>
-          <!-- isValidField('name')
-           {{ getFieldError('name') }}-->
+          isValidField('name')
+          {{ getFieldError('name') }}
       </div>
-  </div>
+    </div> -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Descripción</label>
+      <div class="col-sm-9">
+        <select class="form-select" formControlName="cod_tipo_camion">
+          <option value="" disabled selected>Seleccione un tipo de camión</option>
+          <option *ngFor="let types of typesTrucks" value="{{types.cod_tipo_camion}}">{{types.descripcion}}</option>
+        </select>
 
-  <!-- Modelo -->
-  <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Modelo</label>
-    <div class="col-sm-9">
-        <input class="form-control"
-               formControlName="modelo"
-               placeholder="">
-        <span *ngIf=""
-              class="form-text text-danger">
-
+        <span *ngIf="isValidField('cod_tipo_camion')"
+                class="form-text text-danger">
+                 {{ getFieldError('cod_tipo_camion') }}
         </span>
-        <!-- isValidField('name')
-         {{ getFieldError('name') }}-->
-    </div>
-  </div>
+          <!-- <input class="form-control"
+                formControlName="desc"
+                placeholder="">
+          <span *ngIf=""
+                class="form-text text-danger">
 
-  <!-- Anio -->
-  <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Año</label>
-    <div class="col-sm-9">
-        <input class="form-control"
-               formControlName="anio"
-               placeholder="">
-        <span *ngIf=""
-              class="form-text text-danger">
-
-        </span>
-        <!-- isValidField('name')
-         {{ getFieldError('name') }}-->
+          </span> -->
+          <!-- isValidField('name')
+          {{ getFieldError('name') }}-->
+      </div>
     </div>
-  </div>
-  <!-- Descripción -->
-  <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Descripción</label>
-    <div class="col-sm-9">
-        <input class="form-control"
-               formControlName="desc"
-               placeholder="">
-        <span *ngIf=""
-              class="form-text text-danger">
-
-        </span>
-        <!-- isValidField('name')
-         {{ getFieldError('name') }}-->
+    <div class="mb-3 row">
+      <div class="col-sm-9">
+          <input class="form-control"
+                formControlName="eliminado"
+                placeholder="">
+      </div>
     </div>
-  </div>
+    </div>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-primary">Guardar</button>
+        <button class="btn btn-secondary">Cancelar</button>
+      </div>
 </form>
 </mat-dialog-content>
