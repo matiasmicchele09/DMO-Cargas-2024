@@ -1,3 +1,20 @@
 .icon-fontawesome{
   cursor: pointer;
 }
+
+.btn-delete{
+  color: #e20000;
+}
+
+.btn-modif{
+  color: #0528ee;
+  margin-left: 20px
+}
+
+.btn-modif:hover{
+  color: #8a9cff;
+}
+
+.btn-delete:hover{
+  color: #ff8080;
+}

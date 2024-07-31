@@ -14,7 +14,7 @@
       <table class="table table-dark table-striped-columns">
         <thead>
         <tr>
-          <th style="width: 70px;"></th>
+          <th style="width: 90px;"></th>
           <th>Marca</th>
           <th>Modelo</th>
           <th>Año</th>
@@ -25,12 +25,11 @@
       <tbody>
         <tr *ngFor="let truck of trucks">
           <td>
-            <i class="fa-solid fa-trash icon-fontawesome"
-               style="color: #e20000;" title="Eliminar Camión"
+            <i class="fa-solid fa-trash icon-fontawesome fa-lg btn-delete"
+               title="Eliminar Camión"
                (click)="onDeleteCamion(truck)">
             </i>
-            <i class="fa-solid fa-pen-to-square icon-fontawesome"
-               style="color: #0528ee; margin-left: 20px;"
+            <i class="fa-solid fa-pen-to-square icon-fontawesome fa-lg btn-modif"
                title="Editar Camión"
                (click)="openDialog(truck, false)"></i>
           </td>

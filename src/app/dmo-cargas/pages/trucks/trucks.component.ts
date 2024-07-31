@@ -87,11 +87,6 @@ export class TrucksComponent implements OnInit{
                confirm: esAlta
               },
       });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //this.animal = result;
-    });
   }
 }
 

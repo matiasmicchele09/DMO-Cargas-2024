@@ -36,7 +36,8 @@
         <div class="col-sm-9">
             <input class="form-control"
                   formControlName="marca"
-                  placeholder="">
+                  placeholder=""
+                  appCapitalize>
             <span *ngIf="isValidField('marca')"
                   class="form-text text-danger">
                    {{ getFieldError('marca') }}
@@ -64,28 +65,16 @@
       <div class="col-sm-9">
           <input class="form-control"
                 formControlName="anio"
-                placeholder="">
+                placeholder=""
+                type="number">
           <span *ngIf="isValidField('anio')"
                 class="form-text text-danger">
                  {{ getFieldError('anio') }}
           </span>
       </div>
     </div>
-    <!-- Descripción -->
-    <!-- <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Descripción</label>
-      <div class="col-sm-9">
-          <input class="form-control"
-                formControlName="desc"
-                placeholder="">
-          <span *ngIf=""
-                class="form-text text-danger">
 
-          </span>
-          isValidField('name')
-          {{ getFieldError('name') }}
-      </div>
-    </div> -->
+    <!-- Descripción -->
     <div class="mb-3 row">
       <label class="col-sm-3 col-form-label">Descripción</label>
       <div class="col-sm-9">
@@ -98,28 +87,15 @@
                 class="form-text text-danger">
                  {{ getFieldError('cod_tipo_camion') }}
         </span>
-          <!-- <input class="form-control"
-                formControlName="desc"
-                placeholder="">
-          <span *ngIf=""
-                class="form-text text-danger">
+      </div>
+    </div>
+    </div>
 
-          </span> -->
-          <!-- isValidField('name')
-          {{ getFieldError('name') }}-->
-      </div>
-    </div>
-    <div class="mb-3 row">
-      <div class="col-sm-9">
-          <input class="form-control"
-                formControlName="eliminado"
-                placeholder="">
-      </div>
-    </div>
+    <div *ngIf="pristine" style="color: red; margin-bottom: 10px;">
+      Ningún campo ha sido modificado
     </div>
       <div class="d-flex justify-content-between">
         <button class="btn btn-primary">Guardar</button>
-        <button class="btn btn-secondary">Cancelar</button>
       </div>
 </form>
 </mat-dialog-content>

@@ -16,14 +16,14 @@ export class DialogTrucksComponent implements OnInit{
   public title: any;
   public esAlta: boolean = false;
   public typesTrucks:TiposCamiones[] = [];
+  public pristine: boolean = false;
 
   public myForm: FormGroup = this.fb.group({
     patente_camion: ['', Validators.required],
     marca:  ['', Validators.required],
     modelo:  ['', Validators.required],
     anio:  ['', Validators.required],
-    cod_tipo_camion:  ['', Validators.required],
-    eliminado: [false]
+    cod_tipo_camion:  ['', Validators.required]
   })
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -55,6 +55,10 @@ export class DialogTrucksComponent implements OnInit{
                 ?.patchValue(this.data.truck.marca);
       this.myForm.get('cod_tipo_camion')
                 ?.patchValue(this.data.truck.cod_tipo_camion);
+
+
+      console.log(this.areAllFieldsPristine());
+      //this.areAllFieldsPristine() = false;
     }
 
   //Hacemos un método para el manejo de muchas validaciones
@@ -86,34 +90,66 @@ export class DialogTrucksComponent implements OnInit{
     return null;
   }
 
+  capitalizeWords(input: string): string {
+    return input.replace(/\w\S*/g, (txt) => {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
+  areAllFieldsPristine(): boolean {
+    const controls = this.myForm.controls;
+    return controls['patente_camion'].pristine &&
+           controls['marca'].pristine &&
+           controls['modelo'].pristine &&
+           controls['anio'].pristine;
+  }
+
+
   onSubmit():void{
-    console.log("En on subit");
 
-    //! validar que se haya tocado efectivamente el formulario. sino como que yo entro y luego no modifo nada y hago la peticion igual
+    //* Valido que nada este vacío
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
 
-  // console.log(this.myForm.invalid);
-  //   if (this.myForm.invalid) {
-  //     this.myForm.markAllAsTouched();
-  //     return;
-  //   }
-  //   console.log(this.myForm.value);
-    //Para eliminar el formulario de la vista, no se muy bien para que lo hizo
-    //(this.myForm.controls['favoriteGames'] as FormArray) = this.fb.array([])
-    //this.myForm.reset();
+    //* Valido que hayan cambiado algún valor
+    //Si el valor NO ha sido modificado --> true | Si ha sido modificado --> false
+    console.log(this.areAllFieldsPristine());
+    if (this.areAllFieldsPristine()){
+      this.pristine = true;
+      return;
+    } else this.pristine = false;
+
+
+    //* Capitalizo las palabras
+    const capitalizedMarca = this.capitalizeWords(this.myForm.get('marca')!.value);
+    const capitalizedModelo = this.capitalizeWords(this.myForm.get('modelo')!.value);
+    this.myForm.patchValue({
+      marca: capitalizedMarca,
+      modelo: capitalizedModelo,
+    });
+
+    console.log(this.myForm);
     this.dmoService.updateTruck(this.myForm.value)
     .subscribe((resp)=>{
 
       if (resp.ok){
         Swal.fire({
           title: `${resp.msg}`,
-          icon: "success"
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000
         });
+
       }
       else {
         Swal.fire({
           title: `${resp.msg}`,
-          icon: "error"
+          icon: "error",
+          timer: 2000
         });
+
       }
     })
 
