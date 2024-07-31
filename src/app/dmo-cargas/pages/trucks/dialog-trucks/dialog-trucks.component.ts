@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TiposCamiones } from 'src/app/dmo-cargas/interfaces/tiposCamiones.interface';
 import { DmoService } from 'src/app/dmo-cargas/services/dmo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dialog-trucks',
@@ -86,18 +87,35 @@ export class DialogTrucksComponent implements OnInit{
   }
 
   onSubmit():void{
-  console.log(this.myForm.invalid);
-    if (this.myForm.invalid) {
-      this.myForm.markAllAsTouched();
-      return;
-    }
-    console.log(this.myForm.value);
+    console.log("En on subit");
+
+    //! validar que se haya tocado efectivamente el formulario. sino como que yo entro y luego no modifo nada y hago la peticion igual
+
+  // console.log(this.myForm.invalid);
+  //   if (this.myForm.invalid) {
+  //     this.myForm.markAllAsTouched();
+  //     return;
+  //   }
+  //   console.log(this.myForm.value);
     //Para eliminar el formulario de la vista, no se muy bien para que lo hizo
     //(this.myForm.controls['favoriteGames'] as FormArray) = this.fb.array([])
     //this.myForm.reset();
     this.dmoService.updateTruck(this.myForm.value)
     .subscribe((resp)=>{
-      console.log(resp);})
+
+      if (resp.ok){
+        Swal.fire({
+          title: `${resp.msg}`,
+          icon: "success"
+        });
+      }
+      else {
+        Swal.fire({
+          title: `${resp.msg}`,
+          icon: "error"
+        });
+      }
+    })
 
   }
 

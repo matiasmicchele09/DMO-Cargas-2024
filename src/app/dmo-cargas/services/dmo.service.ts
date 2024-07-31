@@ -52,14 +52,10 @@ export class DmoService {
   }
 
   //* Editar un camión
-  updateTruck(truck: Camiones): Observable<boolean>{
-    const body = truck;
-    console.log(body);
-    return this.http.put(`${this.baseUrl}/update_truck`, truck)
-    //delete(`${this.baseUrl}/logicDeleteTruck`, {body: body})
+  updateTruck(truck: Camiones): Observable<{ ok: boolean, msg: string }>{
+    return this.http.put<{ ok: boolean, msg: string }>(`${this.baseUrl}/update_truck`, truck)
     .pipe(
-      catchError(() => of(false)),
-      map(() => true)
+      catchError((error) => of({ ok: false, msg: error.message }))
     )
 
   }
