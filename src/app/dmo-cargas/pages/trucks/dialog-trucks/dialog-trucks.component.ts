@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TiposCamiones } from 'src/app/dmo-cargas/interfaces/tiposCamiones.interface';
 import { DmoService } from 'src/app/dmo-cargas/services/dmo.service';
 import Swal from 'sweetalert2';
@@ -28,7 +28,8 @@ export class DialogTrucksComponent implements OnInit{
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private fb: FormBuilder,
-              private dmoService: DmoService){
+              private dmoService: DmoService,
+            private dialogRef: MatDialogRef<DialogTrucksComponent>){
               }
 
 
@@ -104,6 +105,9 @@ export class DialogTrucksComponent implements OnInit{
            controls['anio'].pristine;
   }
 
+  closeModal() {
+    this.dialogRef.close();
+  }
 
   onSubmit():void{
 
@@ -132,7 +136,7 @@ export class DialogTrucksComponent implements OnInit{
 
     console.log(this.myForm);
     this.dmoService.updateTruck(this.myForm.value)
-    .subscribe((resp)=>{
+    .subscribe(async(resp)=>{
 
       if (resp.ok){
         Swal.fire({
@@ -151,7 +155,9 @@ export class DialogTrucksComponent implements OnInit{
         });
 
       }
+      await this.dialogRef.close('updated')
     })
+
 
   }
 

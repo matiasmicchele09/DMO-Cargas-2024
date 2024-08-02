@@ -82,11 +82,21 @@ export class TrucksComponent implements OnInit{
   openDialog(truck:any, esAlta:boolean): void {
     console.log(truck);
     const dialogRef = this.dialog.open(DialogTrucksComponent,
-      { data: {truck,
+      {
+        data: {truck,
                types: this.typesTrucks,
                confirm: esAlta
               },
+        disableClose: true // Evita que el modal se cierre al hacer clic fuera de él
       });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'updated') {
+          this.trucks = []
+          this.ngOnInit();
+        }
+      });
+
   }
 }
 
