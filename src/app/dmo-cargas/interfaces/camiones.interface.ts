@@ -3,6 +3,8 @@ export interface Camiones {
   marca: string,
   modelo: string,
   anio: string;
+  cod_usuario: number;
+  descTipoCamion: string;
   cod_tipo_camion: number;
   eliminado: boolean
 }

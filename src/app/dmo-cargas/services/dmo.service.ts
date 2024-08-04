@@ -38,6 +38,19 @@ export class DmoService {
     return this.http.get<any>(url);
   }
 
+  //* Agregar un camión
+  addTruck(truck: Camiones): Observable<any>{
+    const newTruck = {...truck, "cod_usuario":2, "eliminado": false}
+    //* Esto es para agregar los campos que necesitan si o si el back para cargar el alta
+    console.log(newTruck);
+
+    return this.http.post(`${this.baseUrl}/add_truck`, newTruck)
+    .pipe(
+      catchError(() => of(false)),
+      map(() => true)
+    )
+  }
+
   //* Eliminar un camión
   deleteTruckById(patente_camion:string, eliminado: boolean): Observable<boolean>{
     const body = {patente_camion, eliminado}

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Camiones } from 'src/app/dmo-cargas/interfaces/camiones.interface';
 import { TiposCamiones } from 'src/app/dmo-cargas/interfaces/tiposCamiones.interface';
 import { DmoService } from 'src/app/dmo-cargas/services/dmo.service';
 import Swal from 'sweetalert2';
@@ -34,7 +35,6 @@ export class DialogTrucksComponent implements OnInit{
 
 
   ngOnInit(): void {
-      this.truck = this.data.truck;
       this.esAlta = this.data.confirm;
       console.log(this.data);
       this.typesTrucks = this.data.types
@@ -44,22 +44,18 @@ export class DialogTrucksComponent implements OnInit{
       }
       else {
         this.title = 'Edite los datos del camión'
-      }
 
-      this.myForm.get('patente_camion')
+        this.myForm.get('patente_camion')
                 ?.patchValue(this.data.truck.patente_camion);
-      this.myForm.get('anio')
+        this.myForm.get('anio')
                 ?.patchValue(this.data.truck.anio);
-      this.myForm.get('modelo')
+        this.myForm.get('modelo')
                 ?.patchValue(this.data.truck.modelo);
-      this.myForm.get('marca')
+        this.myForm.get('marca')
                 ?.patchValue(this.data.truck.marca);
-      this.myForm.get('cod_tipo_camion')
+        this.myForm.get('cod_tipo_camion')
                 ?.patchValue(this.data.truck.cod_tipo_camion);
-
-
-      console.log(this.areAllFieldsPristine());
-      //this.areAllFieldsPristine() = false;
+      }
     }
 
   //Hacemos un método para el manejo de muchas validaciones
@@ -119,7 +115,6 @@ export class DialogTrucksComponent implements OnInit{
 
     //* Valido que hayan cambiado algún valor
     //Si el valor NO ha sido modificado --> true | Si ha sido modificado --> false
-    console.log(this.areAllFieldsPristine());
     if (this.areAllFieldsPristine()){
       this.pristine = true;
       return;
@@ -135,28 +130,56 @@ export class DialogTrucksComponent implements OnInit{
     });
 
     console.log(this.myForm);
-    this.dmoService.updateTruck(this.myForm.value)
-    .subscribe(async(resp)=>{
 
-      if (resp.ok){
-        Swal.fire({
-          title: `${resp.msg}`,
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2000
-        });
+    if (this.esAlta){
+      this.dmoService.addTruck(this.myForm.value)
+      .subscribe(resp=>{
+        console.log("resp", resp);
+        if (resp){
+          Swal.fire({
+            title: 'Camión Agregado Existosamente',
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000
+          });
 
-      }
-      else {
-        Swal.fire({
-          title: `${resp.msg}`,
-          icon: "error",
-          timer: 2000
-        });
+        }
+        else {
+          Swal.fire({
+            title: 'Ha Ocurrido un Error',
+            icon: "error",
+            timer: 2000
+          });
+        }
+         this.dialogRef.close('updated')
+      })
 
-      }
-      await this.dialogRef.close('updated')
-    })
+    }
+    else {
+
+      this.dmoService.updateTruck(this.myForm.value)
+      .subscribe(async(resp)=>{
+
+        if (resp.ok){
+          Swal.fire({
+            title: `${resp.msg}`,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000
+          });
+
+        }
+        else {
+          Swal.fire({
+            title: `${resp.msg}`,
+            icon: "error",
+            timer: 2000
+          });
+
+        }
+        await this.dialogRef.close('updated')
+      })
+    }
 
 
   }

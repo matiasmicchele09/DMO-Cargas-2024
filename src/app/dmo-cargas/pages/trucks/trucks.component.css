@@ -5,7 +5,12 @@
 .btn-delete{
   color: #e20000;
 }
-
+.btn-new{
+  color: #06a273;
+}
+.btn-new:hover{
+  color: #87a098;
+}
 .btn-modif{
   color: #0528ee;
   margin-left: 20px
