@@ -1,78 +1,94 @@
-<div class="container m-5">
-  <div class="row">
-    <div class="col mb-3">
-      <h5>Mis camiones
-        <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome btn-new"
-           title="Agregar Camión"
-           (click)="openDialog(newTruck, true)">
+<div class="custom-background">
+  <div class="container m-5">
+    <div class="row">
+      <div class="col mb-3">
+        <h5>Mis camiones
+          <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome btn-new"
+            title="Agregar Camión"
+            (click)="openDialog(newTruck, true)">
 
-        </i>
-      </h5>
+          </i>
+        </h5>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <table class="table table-dark table-striped-columns">
-        <thead>
-        <tr>
-          <th style="width: 90px;"></th>
-          <th>Marca</th>
-          <th>Modelo</th>
-          <th>Año</th>
-          <th>Patente</th>
-          <th>Descripción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let truck of trucks">
-          <td>
-            <i class="fa-solid fa-trash icon-fontawesome fa-lg btn-delete"
-               title="Eliminar Camión"
-               (click)="onDeleteCamion(truck)">
-            </i>
-            <i class="fa-solid fa-pen-to-square icon-fontawesome fa-lg btn-modif"
-               title="Editar Camión"
-               (click)="openDialog(truck, false)"></i>
-          </td>
-          <td>{{truck.marca}}</td>
-          <td>{{truck.modelo}}</td>
-          <td>{{truck.anio}}</td>
-          <td>{{truck.patente_camion}}</td>
-          <td>{{truck.descTipoCamion}}</td>
-        </tr>
-      </tbody>
-      </table>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped" style="border: 8px;">
+          <thead>
+          <tr>
+            <th style="width: 90px;"></th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Patente</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let truck of trucks">
+            <td>
+              <i class="fa-solid fa-trash icon-fontawesome fa-lg btn-delete"
+                title="Eliminar Camión"
+                (click)="onDeleteCamion(truck)">
+              </i>
+              <i class="fa-solid fa-pen-to-square icon-fontawesome fa-lg btn-modif"
+                title="Editar Camión"
+                (click)="openDialog(truck, false)"></i>
+            </td>
+            <td>{{truck.marca}}</td>
+            <td>{{truck.modelo}}</td>
+            <td>{{truck.anio}}</td>
+            <td>{{truck.patente_camion}}</td>
+            <td>{{truck.descTipoCamion}}</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col mb-3">
-      <button type="button" class="btn btn-primary" style="margin-right: 10px;">Agregar Carroceria</button>
-      <!-- <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Editar Carroceria</button>
-      <button type="button" class="btn btn-danger" (click)="onDeleteCamion()">Eliminar Carroceria</button> -->
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <table class="table table-dark table-striped-columns">
-        <thead>
-        <tr>
-          <th>Patente</th>
-          <th>Cant. Ejes</th>
-          <th>Año</th>
-          <th>Carroceria</th>
+    <div class="row">
+      <div class="col mb-3">
+        <h5>Mis Carrocerias
+          <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome btn-new"
+            title="Agregar Carrocería"
+            (click)="openDialog(newTruck, true)">
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let carroceria of carrocerias">
-          <td>{{carroceria.patente_carroceria}}</td>
-          <td>{{carroceria.cant_ejes}}</td>
-          <td>{{carroceria.anio}}</td>
-          <td>{{carroceria.patente_carroceria}}</td>
-        </tr>
-      </tbody>
-      </table>
+          </i>
+        </h5>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped" style="border: 8px;">
+          <thead>
+          <tr>
+            <th style="width: 90px;"></th>
+            <th>Patente</th>
+            <th>Cant. Ejes</th>
+            <th>Año</th>
+            <th>Carroceria</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let carroceria of carrocerias">
+            <td>
+              <i class="fa-solid fa-trash icon-fontawesome fa-lg btn-delete"
+                title="Eliminar Carrocería"
+                >
+              </i>
+              <i class="fa-solid fa-pen-to-square icon-fontawesome fa-lg btn-modif"
+                title="Editar Carrocería"
+                ></i>
+            </td>
+            <td>{{carroceria.patente_carroceria}}</td>
+            <td>{{carroceria.cant_ejes}}</td>
+            <td>{{carroceria.anio}}</td>
+            <td>{{carroceria.patente_carroceria}}</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-
