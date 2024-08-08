@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTrucksComponent } from './dialog-trucks/dialog-trucks.component';
 import { Camiones } from '../../interfaces/camiones.interface';
+import { TiposCarrocerias } from '../../interfaces/tiposCarrocerias.interface';
+import { Carrocerias } from '../../interfaces/carrocerias.interface';
 @Component({
   selector: 'app-trucks',
   templateUrl: './trucks.component.html',
@@ -16,8 +18,9 @@ export class TrucksComponent implements OnInit{
 
   public trucks:Camiones[] = [];
   public newTruck:Camiones[] = [];
-  public carrocerias:any[] = [];
+  public carrocerias:Carrocerias[] = [];
   public typesTrucks:TiposCamiones[] = [];
+  public typesCarrocerias:TiposCarrocerias[] = [];
 
   constructor(private dmoService: DmoService,
               private authService: AuthService,
@@ -32,17 +35,20 @@ export class TrucksComponent implements OnInit{
     //* Hay solo 4 tipos de camiones, pero si hubiera mas y el camionero tendría todos los tipos deberia hacer un monton de consultas al back solo para pedir la desc del camion
     this.dmoService.getAllTypeTruck()
     .subscribe(type=>this.typesTrucks = type)
+    this.dmoService.getAllTypeCarrocerias()
+     .subscribe(type=>this.typesCarrocerias = type)
 
     this.dmoService.getTrucks(2)//this.user!.cod_usuario)
     .subscribe(
       truck =>{
+        console.log(this.typesCarrocerias);
         truck.forEach((element:Camiones) => {
           let descripcion;
           //* Asigno la descrición en esta variable por cada camión que vaya iterando, luego la agrego al arreglo de objetos de camiones
           descripcion = this.typesTrucks.filter(types => types.cod_tipo_camion === element.cod_tipo_camion);
           //* Simplemente poniendo el nombre de campo que quiero (descTipoCamion) se crea éste en el objeto.
           element.descTipoCamion = descripcion[0].descripcion;
-         //element.
+
           if (!element.eliminado){
           this.trucks.push(element);
         }
@@ -54,6 +60,14 @@ export class TrucksComponent implements OnInit{
       this.dmoService.getCarrocerias(2) //this.user!.cod_usuario)
       .subscribe(carroceria=>{
         console.log(carroceria);
+        carroceria.forEach((element:Carrocerias) => {
+          let desc;
+          desc = this.typesCarrocerias.filter(types => types.cod_tipo_carroceria === element.cod_tipo_carroceria)
+          element.descTipoCarroceria = desc[0].descripcion;
+          if (!element.eliminado){
+            this.carrocerias.push(element);
+          }
+        });
         this.carrocerias = carroceria;
       })
   }

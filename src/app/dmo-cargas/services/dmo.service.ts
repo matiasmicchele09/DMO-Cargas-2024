@@ -38,6 +38,12 @@ export class DmoService {
     return this.http.get<any>(url);
   }
 
+  getAllTypeCarrocerias():Observable<any>{
+    const url = `${ this.baseUrl }/getCarroceria`;
+    return this.http.get<any>(url);
+  }
+
+
   //* Agregar un camión
   addTruck(truck: Camiones): Observable<any>{
     const newTruck = {...truck, "cod_usuario":2, "eliminado": false}
