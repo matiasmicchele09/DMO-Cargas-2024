@@ -38,11 +38,22 @@ export class DmoService {
     return this.http.get<any>(url);
   }
 
+  //* Todas las carrocerias
   getAllTypeCarrocerias():Observable<any>{
     const url = `${ this.baseUrl }/getCarroceria`;
     return this.http.get<any>(url);
   }
 
+  //* Eliminar una carrocería
+  deleteCarroceriaById(patente_carroceria:string, eliminado: boolean): Observable<boolean>{
+
+    return this.http.put(`${this.baseUrl}/logicDeleteCarroceria`, {patente_carroceria, eliminado})
+    //delete(`${this.baseUrl}/logicDeleteTruck`, {body: body})
+    .pipe(
+      catchError(() => of(false)),
+      map(() => true)
+    )
+  }
 
   //* Agregar un camión
   addTruck(truck: Camiones): Observable<any>{
@@ -59,8 +70,6 @@ export class DmoService {
 
   //* Eliminar un camión
   deleteTruckById(patente_camion:string, eliminado: boolean): Observable<boolean>{
-    const body = {patente_camion, eliminado}
-    console.log(body);
 
     return this.http.put(`${this.baseUrl}/logicDeleteTruck`, {patente_camion, eliminado})
     //delete(`${this.baseUrl}/logicDeleteTruck`, {body: body})

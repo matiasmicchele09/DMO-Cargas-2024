@@ -5,7 +5,7 @@
         <h5>Mis camiones
           <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome btn-new"
             title="Agregar Camión"
-            (click)="openDialog(newTruck, true)">
+            (click)="openDialogTruck(newTruck, true)">
 
           </i>
         </h5>
@@ -33,7 +33,7 @@
               </i>
               <i class="fa-solid fa-pen-to-square icon-fontawesome fa-lg btn-modif"
                 title="Editar Camión"
-                (click)="openDialog(truck, false)"></i>
+                (click)="openDialogTruck(truck, false)"></i>
             </td>
             <td>{{truck.marca}}</td>
             <td>{{truck.modelo}}</td>
@@ -50,7 +50,7 @@
         <h5>Mis Carrocerias
           <i class="fa-solid fa-square-plus fa-2xl icon-fontawesome btn-new"
             title="Agregar Carrocería"
-            (click)="openDialog(newTruck, true)">
+            (click)="openDialogTruck(newTruck, true)">
 
           </i>
         </h5>
@@ -75,11 +75,11 @@
             <td>
               <i class="fa-solid fa-trash icon-fontawesome fa-lg btn-delete"
                 title="Eliminar Carrocería"
-                >
+                (click)="onDeleteCarroceria(carroceria)">
               </i>
               <i class="fa-solid fa-pen-to-square icon-fontawesome fa-lg btn-modif"
                 title="Editar Carrocería"
-                ></i>
+                (click)="openDialogCarroceria(carroceria, false)"></i>
             </td>
             <td>{{carroceria.patente_carroceria}}</td>
             <td>{{carroceria.cant_ejes}}</td>

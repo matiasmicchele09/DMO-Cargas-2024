@@ -9,6 +9,7 @@ import { DialogTrucksComponent } from './dialog-trucks/dialog-trucks.component';
 import { Camiones } from '../../interfaces/camiones.interface';
 import { TiposCarrocerias } from '../../interfaces/tiposCarrocerias.interface';
 import { Carrocerias } from '../../interfaces/carrocerias.interface';
+import { DialogCarroceriasComponent } from './dialog-carrocerias/dialog-carrocerias.component';
 @Component({
   selector: 'app-trucks',
   templateUrl: './trucks.component.html',
@@ -93,8 +94,29 @@ export class TrucksComponent implements OnInit{
       }
     });
   }
+  onDeleteCarroceria(carroceria:Carrocerias):void{
+    Swal.fire({
+      title: `¿Seguro que desea eliminar la carrocería ${carroceria.descTipoCarroceria}, patente ${carroceria.patente_carroceria}?`,
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Si",
+      denyButtonText: `No`
+    }).then((result) => {
 
-  openDialog(truck:any, esAlta:boolean): void {
+      if (result.isConfirmed) {
+        this.dmoService.deleteCarroceriaById(carroceria.patente_carroceria, true)
+        .subscribe((resp)=>{
+          console.log(resp);
+          this.carrocerias = this.carrocerias.filter(t => t.patente_carroceria !== carroceria.patente_carroceria);
+          Swal.fire("Carroceía eliminada", "", "success",);
+        })
+      } else if (result.isDenied) {
+        return;
+      }
+    });
+  }
+
+  openDialogTruck(truck:any, esAlta:boolean): void {
     console.log(truck);
     const dialogRef = this.dialog.open(DialogTrucksComponent,
       {
@@ -108,6 +130,25 @@ export class TrucksComponent implements OnInit{
       dialogRef.afterClosed().subscribe(result => {
         if (result === 'updated') {
           this.trucks = []
+          this.ngOnInit();
+        }
+      });
+
+  }
+  openDialogCarroceria(carrroceria:any, esAlta:boolean): void {
+    console.log(carrroceria);
+    const dialogRef = this.dialog.open(DialogCarroceriasComponent,
+      {
+        data: {carrroceria,
+               types: this.typesCarrocerias,
+               confirm: esAlta
+              },
+        disableClose: true // Evita que el modal se cierre al hacer clic fuera de él
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'updated') {
+          this.carrocerias = []
           this.ngOnInit();
         }
       });

@@ -10,41 +10,29 @@
           <label class="col-sm-3 col-form-label">Patente</label>
           <div class="col-sm-9">
               <input class="form-control"
-                    formControlName="patente_camion"
+                    formControlName="patente_carroceria"
                     placeholder="">
-              <span *ngIf="isValidField('patente_camion')"
+              <span *ngIf="isValidField('patente_carroceria')"
                     class="form-text text-danger">
-                    {{ getFieldError('patente_camion') }}
+                    {{ getFieldError('patente_carroceria') }}
               </span>
           </div>
       </div>
 
-      <!-- Marca -->
+      <!-- Ejes -->
       <div class="mt-2 mb-3 row">
-          <label class="col-sm-3 col-form-label">Marca</label>
+          <label class="col-sm-3 col-form-label">Cant. Ejes</label>
           <div class="col-sm-9">
               <input class="form-control"
-                    formControlName="marca"
-                    placeholder="">
-              <span *ngIf="isValidField('marca')"
+                    formControlName="cant_ejes"
+                    placeholder=""
+                    type="number"
+                    >
+              <span *ngIf="isValidField('cant_ejes')"
                     class="form-text text-danger">
-                    {{ getFieldError('marca') }}
+                    {{ getFieldError('cant_ejes') }}
               </span>
           </div>
-      </div>
-
-      <!-- Modelo -->
-      <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Modelo</label>
-        <div class="col-sm-9">
-            <input class="form-control"
-                  formControlName="modelo"
-                  placeholder="">
-            <span *ngIf="isValidField('modelo')"
-                  class="form-text text-danger">
-                  {{ getFieldError('modelo') }}
-            </span>
-        </div>
       </div>
 
       <!-- Anio -->
@@ -66,14 +54,14 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Descripción</label>
         <div class="col-sm-9">
-          <select class="form-select" formControlName="cod_tipo_camion">
+          <select class="form-select" formControlName="cod_tipo_carroceria">
             <option value="" disabled selected>Seleccione un tipo de camión</option>
-            <option *ngFor="let types of typesTrucks" value="{{types.cod_tipo_camion}}">{{types.descripcion}}</option>
+            <option *ngFor="let types of typesCarrocerias" value="{{types.cod_tipo_carroceria}}">{{types.descripcion}}</option>
           </select>
 
-          <span *ngIf="isValidField('cod_tipo_camion')"
+          <span *ngIf="isValidField('cod_tipo_carroceria')"
                   class="form-text text-danger">
-                  {{ getFieldError('cod_tipo_camion') }}
+                  {{ getFieldError('cod_tipo_carroceria') }}
           </span>
         </div>
       </div>

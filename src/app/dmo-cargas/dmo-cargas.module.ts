@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrucksComponent } from './pages/trucks/trucks.component';
+import { DialogCarroceriasComponent } from './pages/trucks/dialog-carrocerias/dialog-carrocerias.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { TrucksComponent } from './pages/trucks/trucks.component';
     LayoutComponent,
     NavbarComponent,
     TrucksComponent,
+    DialogCarroceriasComponent,
   ],
   imports: [
     CommonModule,
