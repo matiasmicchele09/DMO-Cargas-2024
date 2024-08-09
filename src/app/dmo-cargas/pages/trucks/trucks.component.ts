@@ -19,6 +19,7 @@ export class TrucksComponent implements OnInit{
 
   public trucks:Camiones[] = [];
   public newTruck:Camiones[] = [];
+  public newCarroceria:Carrocerias[] = [];
   public carrocerias:Carrocerias[] = [];
   public typesTrucks:TiposCamiones[] = [];
   public typesCarrocerias:TiposCarrocerias[] = [];
@@ -30,7 +31,10 @@ export class TrucksComponent implements OnInit{
   get user():User | undefined{
     return this.authService.currentUser
   }
+
   ngOnInit(): void {
+    this.trucks = [];
+    this.carrocerias = [];
 
     //* Traigo todos los tipos de camiones para poder manejarlos en el front y no hacer tantas consultas al back
     //* Hay solo 4 tipos de camiones, pero si hubiera mas y el camionero tendría todos los tipos deberia hacer un monton de consultas al back solo para pedir la desc del camion
@@ -54,6 +58,7 @@ export class TrucksComponent implements OnInit{
           this.trucks.push(element);
         }
         });
+        //this.trucks = truck;
 
         console.log(this.trucks);
       })
@@ -69,7 +74,7 @@ export class TrucksComponent implements OnInit{
             this.carrocerias.push(element);
           }
         });
-        this.carrocerias = carroceria;
+        //this.carrocerias = carroceria;
       })
   }
 
@@ -94,6 +99,7 @@ export class TrucksComponent implements OnInit{
       }
     });
   }
+
   onDeleteCarroceria(carroceria:Carrocerias):void{
     Swal.fire({
       title: `¿Seguro que desea eliminar la carrocería ${carroceria.descTipoCarroceria}, patente ${carroceria.patente_carroceria}?`,
@@ -127,7 +133,8 @@ export class TrucksComponent implements OnInit{
         disableClose: true // Evita que el modal se cierre al hacer clic fuera de él
       });
 
-      dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed()
+      .subscribe( (result) => {
         if (result === 'updated') {
           this.trucks = []
           this.ngOnInit();
@@ -135,6 +142,7 @@ export class TrucksComponent implements OnInit{
       });
 
   }
+
   openDialogCarroceria(carrroceria:any, esAlta:boolean): void {
     console.log(carrroceria);
     const dialogRef = this.dialog.open(DialogCarroceriasComponent,

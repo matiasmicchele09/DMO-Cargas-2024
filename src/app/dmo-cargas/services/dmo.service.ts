@@ -4,6 +4,7 @@ import { enviroments } from 'src/environments/environments';
 
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Camiones } from '../interfaces/camiones.interface';
+import { Carrocerias } from '../interfaces/carrocerias.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,30 @@ export class DmoService {
   getAllTypeCarrocerias():Observable<any>{
     const url = `${ this.baseUrl }/getCarroceria`;
     return this.http.get<any>(url);
+  }
+
+   //* Agregar una carrocería
+   addCarroceria(carroceria: Carrocerias): Observable<any>{
+    const newCarroceria = {...carroceria, "cod_usuario":2, "eliminado": false}
+    //* Esto es para agregar los campos que necesitan si o si el back para cargar el alta
+    console.log(newCarroceria);
+
+    return this.http.post(`${this.baseUrl}/add_carroceria`, newCarroceria)
+    .pipe(
+      catchError(() => of(false)),
+      map(() => true)
+    )
+  }
+
+
+  //* Editar una carrocería
+  updateCarroceria(carroceria: Carrocerias): Observable<{ ok: boolean, msg: string }>{
+    console.log(carroceria);
+    return this.http.put<{ ok: boolean, msg: string }>(`${this.baseUrl}/update_carroceria`, carroceria)
+    .pipe(
+      catchError((error) => of({ ok: false, msg: error.message }))
+    )
+
   }
 
   //* Eliminar una carrocería

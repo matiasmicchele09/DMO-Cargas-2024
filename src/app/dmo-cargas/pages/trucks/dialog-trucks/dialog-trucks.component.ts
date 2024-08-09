@@ -98,7 +98,8 @@ export class DialogTrucksComponent implements OnInit{
     return controls['patente_camion'].pristine &&
            controls['marca'].pristine &&
            controls['modelo'].pristine &&
-           controls['anio'].pristine;
+           controls['anio'].pristine &&
+           controls['cod_tipo_camion'].pristine;
   }
 
   closeModal() {
@@ -124,7 +125,13 @@ export class DialogTrucksComponent implements OnInit{
     //* Capitalizo las palabras
     const capitalizedMarca = this.capitalizeWords(this.myForm.get('marca')!.value);
     const capitalizedModelo = this.capitalizeWords(this.myForm.get('modelo')!.value);
+
+    //* Mayúscula para la patente
+    const upperCasePatente = this.myForm.controls['patente_camion'].value.toUpperCase()
+    console.log(upperCasePatente);
+
     this.myForm.patchValue({
+      patente_camion: upperCasePatente,
       marca: capitalizedMarca,
       modelo: capitalizedModelo,
     });
@@ -133,10 +140,10 @@ export class DialogTrucksComponent implements OnInit{
 
     if (this.esAlta){
       this.dmoService.addTruck(this.myForm.value)
-      .subscribe(resp=>{
+      .subscribe(async resp=>{
         console.log("resp", resp);
         if (resp){
-          Swal.fire({
+          await Swal.fire({
             title: 'Camión Agregado Existosamente',
             icon: "success",
             showConfirmButton: false,
@@ -145,15 +152,15 @@ export class DialogTrucksComponent implements OnInit{
 
         }
         else {
-          Swal.fire({
+          await Swal.fire({
             title: 'Ha Ocurrido un Error',
             icon: "error",
             timer: 2000
           });
         }
+
          this.dialogRef.close('updated')
       })
-
     }
     else {
 
@@ -161,7 +168,7 @@ export class DialogTrucksComponent implements OnInit{
       .subscribe(async(resp)=>{
 
         if (resp.ok){
-          Swal.fire({
+          await Swal.fire({
             title: `${resp.msg}`,
             icon: "success",
             showConfirmButton: false,
@@ -170,14 +177,14 @@ export class DialogTrucksComponent implements OnInit{
 
         }
         else {
-          Swal.fire({
+          await Swal.fire({
             title: `${resp.msg}`,
             icon: "error",
             timer: 2000
           });
-
         }
-        await this.dialogRef.close('updated')
+
+        this.dialogRef.close('updated')
       })
     }
 
