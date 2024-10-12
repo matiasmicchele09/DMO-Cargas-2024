@@ -12,9 +12,11 @@
   align-items: center;
 }
 .seccionUno img {
-  width: 100%;
-  min-height: 400px;
-  height: 700px;
+  /* width: 100%; */
+  /* min-height: 400px; */
+  /* height: 700px; */
+  max-width: 100%;
+  height: auto;
 }
 .seccionUno .contenedor {
   position: absolute;

@@ -17,10 +17,10 @@
           <thead>
           <tr>
             <th style="width: 90px;"></th>
+            <th>Patente</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Año</th>
-            <th>Patente</th>
             <th>Descripción</th>
           </tr>
         </thead>
@@ -35,10 +35,10 @@
                 title="Editar Camión"
                 (click)="openDialogTruck(truck, false)"></i>
             </td>
+            <td>{{truck.patente_camion}}</td>
             <td>{{truck.marca}}</td>
             <td>{{truck.modelo}}</td>
             <td>{{truck.anio}}</td>
-            <td>{{truck.patente_camion}}</td>
             <td>{{truck.descTipoCamion}}</td>
           </tr>
         </tbody>
